@@ -1,0 +1,93 @@
+.right-container{
+    display: flex;
+    margin-left: 200px;
+    flex-direction: column;
+    background-color: rgb(244, 246, 248);
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+}
+.income-expence-balance-transaction{
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    display: flex;
+}
+.income-box,.expense-box,.balance-box,.transaction-box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color:#fff ;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #c5b4b4;
+    box-shadow: 0px 0px 5px #e9dede;
+    box-shadow: 0px 0px 5px #e9dede;
+    font-size: 12px;
+}
+.card-value{
+    font-size: 20px;
+}
+.card-desc{
+    color: rgb(101, 30, 30);
+}
+.income-box{
+    color: rgb(110, 110, 218)
+}
+.expense-box{
+    color: green;
+}
+.balance-box{
+    color: red;
+}
+.transaction-box{
+    color: rebeccapurple;
+}
+.total-expences-container{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color:#fff ;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #c5b4b4;
+    box-shadow: 0px 0px 5px #e9dede;
+    box-shadow: 0px 0px 5px #e9dede;
+    font-size: 12px;
+}
+.account-balance-and-income-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.account-balance-container,.income-container{
+    height: 70vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color:#fff ;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #c5b4b4;
+    box-shadow: 0px 0px 5px #e9dede;
+    box-shadow: 0px 0px 5px #e9dede;
+    font-size: 12px;
+}
+.recent-transactions{
+    height: 70vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color:#fff ;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #c5b4b4;
+    box-shadow: 0px 0px 5px #e9dede;
+    box-shadow: 0px 0px 5px #e9dede;
+    font-size: 12px;
+}
