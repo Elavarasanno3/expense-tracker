@@ -12,7 +12,7 @@ function Transaction() {
   };
 
   return (
-    <div className="app">
+    <div className="transaction-full-container">
       <button className='add-transaction-button' onClick={togglePopup}>Add Transaction</button>
       {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={togglePopup} />}
       <TransactionList />

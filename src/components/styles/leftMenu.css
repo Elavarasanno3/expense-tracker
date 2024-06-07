@@ -34,12 +34,8 @@
     font-size: 12px;
     font-weight: 200;
 }
-.line{
-    height: 1px;
-    width: 100px;
-    background-color: rgb(182, 182, 223);
-}
 a{
+    text-decoration: none;
     list-style-type: none;
     margin-top: 20px;
     width: 100%;
@@ -48,11 +44,13 @@ a{
     padding: 10px 0px;
     border-radius: 20px;
     color: black;
+    transition: 0.3s;
 }
+
 a:hover{
     list-style-type: none;
     margin-top: 20px;
-    background-color: rgb(217, 201, 232);
+    background-color:blueviolet ;
     width: 150px;
     height: 100%;
     text-align: center;
@@ -60,7 +58,7 @@ a:hover{
     border-radius: 20px;
     color:black;
 }
-a:active,a:focus {
+a:active,a:focus,.active {
     list-style-type: none;
     margin-top: 20px;
     background-color: blueviolet;
@@ -81,3 +79,4 @@ a:active,a:focus {
     letter-spacing: 1px;
     font-weight: 500;
 }
+  

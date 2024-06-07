@@ -9,7 +9,6 @@ const CreateAccount = () => {
     phoneNumber: '',
     password: '',
     confirmPassword: '',
-    address: ''
   });
 
   const [error, setError] = useState('');
@@ -26,9 +25,9 @@ const CreateAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, emailId, phoneNumber, password, confirmPassword, address } = formData;
+    const { name, emailId, phoneNumber, password, confirmPassword } = formData;
 
-    if (!name || !emailId || !phoneNumber || !password || !confirmPassword || !address) {
+    if (!name || !emailId || !phoneNumber || !password || !confirmPassword ) {
       setError('All fields must be filled');
       return;
     }
@@ -49,7 +48,6 @@ const CreateAccount = () => {
           emailId,
           phoneNumber,
           password,
-          address,
           confirmPassword
         })
       });
@@ -57,7 +55,7 @@ const CreateAccount = () => {
       const result = await response.text();
       if (response.ok) {
         alert(result);
-        navigate('/signin');
+        navigate('/');
       } else {
         console.error('Backend error:', result);
         setError(result);

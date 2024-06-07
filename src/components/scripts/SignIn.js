@@ -27,6 +27,7 @@ const SignIn = () => {
         console.log('Updated user state:', { email: emailId, password });
         navigate('/dashboard');
       } else {
+        alert("No user found")
         const errorMessage = await response.text();
         throw new Error(errorMessage || 'Sign-in failed');
       }

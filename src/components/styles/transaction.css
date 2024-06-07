@@ -1,9 +1,7 @@
-.Transaction {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.transaction-full-container{
   min-height: 100vh;
+  background-color: rgb(244, 246, 248);
 }
 
 h1 {
