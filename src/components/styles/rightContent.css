@@ -4,7 +4,7 @@
     flex-direction: column;
     background-color: rgb(244, 246, 248);
     gap: 20px;
-    width: 100%;
+    width: calc(100vw - 220px);
     padding: 20px;
 }
 .income-expence-balance-transaction{

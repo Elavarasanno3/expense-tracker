@@ -1,0 +1,84 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .popup-overlay.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+  .form-container{
+    height: 75vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+  .input-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  input{
+    width: 250px;
+  }
+  select{
+    width: 250px;
+  }
+
+  
+  */
+  .submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  .input-form-heading{
+    margin-bottom: 20px;
+  }
+ 
+.radio-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 20px; /* Space between the two radio inputs */
+}
+
+.radio-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content vertically */
+}
+
+.radio-input-container label {
+  margin-bottom: 5px; /* Space between label and radio button */
+}
+
+.radio-input-container input[type="radio"] {
+  margin-top: 5px; /* Optional: Additional spacing if needed */
+}
+.button-container{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
