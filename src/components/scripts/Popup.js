@@ -1,42 +1,46 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTransaction } from '../../redux/transactionReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactions } from '../../redux/transactionReducer';
 import axios from 'axios';
 import '../styles/popup.css';
 
 const Popup = ({ isOpen, onClose }) => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    type: 'income', // Default type
+    type: 'income',
     date: '',
     time: '',
-    category: 'Salary', // Default category for income
+    category: 'Salary',
     amount: '',
     description: ''
   });
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    // Validation: check if all fields are filled
     const { date, time, category, amount, description } = formData;
+  
     if (!date || !time || !category || !amount || !description) {
       alert('Please fill in all fields');
       return;
     }
+  
+    const transactionData = {
+      ...formData,
+      user: { id: user.id }  // Ensure user ID is included as an object
+    };
+  
     try {
-      const response = await axios.post('http://localhost:8080/api/transactions/add', formData);
-      console.log(response.data); // Log the response
-      dispatch(addTransaction(formData)); // Dispatch action to add transaction
+      await axios.post('http://localhost:8080/api/transactions/add', transactionData);
       onClose();
+      // Fetch transactions again after successfully adding a new transaction
+      dispatch(fetchTransactions(user.id));
     } catch (error) {
       console.error('Error while adding transaction:', error);
       alert('Failed to add transaction. Please try again.');
     }
-    const transactionData = { ...formData };
-    dispatch(addTransaction(transactionData)); // Dispatch action to add transaction
-    onClose();
   };
-
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -102,7 +106,7 @@ const Popup = ({ isOpen, onClose }) => {
           </div>
           <div className='button-container'>
             <button className='cancel-button' type='button' onClick={onClose}>Close</button>
-            <button className='submit-button' type='submit' value='Submit' >Submit</button>
+            <button className='submit-button' type='submit' value='Submit'>Submit</button>
           </div>
         </form>
       </div>

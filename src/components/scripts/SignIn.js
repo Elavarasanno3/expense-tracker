@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import {addUser} from '../../redux/userReducer'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch hook
+import { addUser } from '../../redux/userReducer';
 import '../styles/signIn.css';
 
 const SignIn = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch(); // Initialize useDispatch hook
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState('');
   const [password, setPassword] = useState('');
 
+  // Access user state outside of the component
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const handleSignIn = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     try {
       const response = await fetch('http://localhost:8080/api/users/signin', {
         method: 'POST',
@@ -22,18 +28,19 @@ const SignIn = () => {
         body: JSON.stringify({ emailId, password }),
       });
       if (response.ok) {
-        console.log('Sign-in successful');
-        dispatch(addUser({ email: emailId, password }));
-        console.log('Updated user state:', { email: emailId, password });
+        const userData = await response.json();
+        console.log(userData)
+        console.log(userData.id);
+        console.log(userData.name)
+        dispatch(addUser({ id: userData.id, name: userData.name })); // Dispatch only id and name
         navigate('/dashboard');
       } else {
-        alert("No user found")
+        alert("No user found");
         const errorMessage = await response.text();
         throw new Error(errorMessage || 'Sign-in failed');
       }
     } catch (error) {
       console.error('Sign-in failed:', error.message);
-      
     }
   };
 

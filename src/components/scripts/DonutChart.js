@@ -11,15 +11,15 @@ const DonutChart = () => {
     labels: ['Red', 'Blue', 'Yellow', 'Green'],
     datasets: [
       {
-        data: [100, 100, 100, 100],
+        data: [6,5,6,4],
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+        hoverBackgroundColor: ['#FF6350', '#36A2EB', '#FFCE56', '#4BC0C0'],
       },
     ],
   };
 
   const options = {
-    cutout: '70%', // This creates the inner gap
+    cutout: '60%', // This creates the inner gap
     plugins: {
       legend: {
         display: false, // Hide the default legend
