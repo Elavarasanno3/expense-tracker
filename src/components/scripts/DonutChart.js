@@ -1,19 +1,44 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useSelector } from 'react-redux';
 import '../styles/donutChart.css'; // Import the CSS file
 
-// Register the required components
-ChartJS.register(ArcElement, Tooltip, Legend);
-
 const DonutChart = () => {
+  const transactions = useSelector(state => state.transaction.transactions);
+
+  // Calculate total expenses
+  const totalExpenses = transactions.reduce((total, transaction) => {
+    if (transaction.type === 'expense') {
+      return total + transaction.amount;
+    }
+    return total;
+  }, 0);
+
+  // Calculate expenses by category and their percentage
+  const categoryExpenses = transactions.reduce((categories, transaction) => {
+    if (transaction.type === 'expense') {
+      categories[transaction.category] = (categories[transaction.category] || 0) + transaction.amount;
+    }
+    return categories;
+  }, {});
+
+  // Function to generate random colors
+  const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green'],
+    labels: Object.keys(categoryExpenses),
     datasets: [
       {
-        data: [6,5,6,4],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-        hoverBackgroundColor: ['#FF6350', '#36A2EB', '#FFCE56', '#4BC0C0'],
+        data: Object.values(categoryExpenses),
+        backgroundColor: Object.keys(categoryExpenses).map(() => getRandomColor()), // Random colors
+        hoverBackgroundColor: Object.keys(categoryExpenses).map(() => getRandomColor()), // Random hover colors
       },
     ],
   };
@@ -47,7 +72,7 @@ const DonutChart = () => {
                     marginRight: '8px',
                   }}
                 ></span>
-                {label}
+                {label} - {((categoryExpenses[label] / totalExpenses) * 100).toFixed(2)}% {/* Calculate and display percentage */}
               </div>
             ))}
           </div>

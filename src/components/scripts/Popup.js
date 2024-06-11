@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from '../../redux/transactionReducer';
 import axios from 'axios';
@@ -7,14 +7,23 @@ import '../styles/popup.css';
 const Popup = ({ isOpen, onClose }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     type: 'income',
     date: '',
     time: '',
-    category: 'Salary',
+    category: 'Salary', // Initial category set to 'Salary'
     amount: '',
     description: ''
   });
+
+  useEffect(() => {
+    // Update initial category whenever the transaction type changes
+    setFormData(prevData => ({
+      ...prevData,
+      category: prevData.type === 'income' ? 'Salary' : 'Rent'
+    }));
+  }, [formData.type]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

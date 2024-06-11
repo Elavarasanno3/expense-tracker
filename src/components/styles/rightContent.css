@@ -7,7 +7,7 @@
     width: calc(100vw - 220px);
     padding: 20px;
 }
-.income-expence-balance-transaction{
+.income-expense-balance-transaction{
     width: 100%;
     justify-content: space-between;
     gap: 20px;
@@ -45,7 +45,7 @@
 .transaction-box{
     color: rebeccapurple;
 }
-.total-expences-container{
+.total-expenses-container{
     height: 70vh;
     display: flex;
     align-items: center;
